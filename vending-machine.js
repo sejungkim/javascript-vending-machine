@@ -1,13 +1,5 @@
 'use strict';
 
-class Product {
-  constructor(name, price, stock) {
-    this.name = name;
-    this.price = price;
-    this.stock = stock;
-  }
-}
-
 class VendingMachine {
   constructor(productList) {
     this.balance = 0;
@@ -40,13 +32,31 @@ class VendingMachine {
   }
 }
 
-const beverageList = [
-  new Product('콜라', 1000, 2),
-  new Product('사이다', 1000, 10),
-  new Product('포도쥬스', 700, 2),
-  new Product('딸기우유', 500, 4),
-  new Product('파워에이드', 1000, 0)
-];
+const beverageList = [{
+  'name': '콜라',
+  'price': 1000,
+  'stock': 2
+},
+{
+  'name': '사이다',
+  'price': 1000,
+  'stock': 10
+},
+{
+  'name': '포도쥬스',
+  'price': 700,
+  'stock': 2
+},
+{
+  'name': '딸기우유',
+  'price': 500,
+  'stock': 4
+},
+{
+  'name': '파워에이드',
+  'price': 1000,
+  'stock': 0
+}];
 const beverageVM = new VendingMachine(beverageList);
 
 function insertCoin(amount) {
@@ -56,4 +66,4 @@ function insertCoin(amount) {
 }
 
 // Run
-insertCoin(1000);
+insertCoin(900);

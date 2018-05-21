@@ -15,15 +15,7 @@ returnMoney();
 ```
 
 ## 2. 코드 설계
-#### 2.1. 상품 객체
-```javascript
-class Product {
-  // 1. 이름 속성
-  // 2. 가격 속성
-  // 3. 재고 속성
-}
-```
-#### 2.2. 자판기 객체
+#### 2.1. 자판기 객체
 ```javascript
 class VendingMachine {
   // 1. 잔액 속성
@@ -31,7 +23,7 @@ class VendingMachine {
   // 3. 그 외 메소드들
 }
 ```
-#### 2.3. 돈을 넣는(받는) 함수
+#### 2.2. 돈을 넣는(받는) 함수
 ```javascript
 function insertCoin(amount) {
   // 1. 잔액을 변경시킨다.
@@ -39,14 +31,14 @@ function insertCoin(amount) {
   // 3. 분류한 구매 가능한 상품 리스트를 출력한다.
 }
 ```
-#### 2.4. 잔액 변경 메소드 (VendingMachine class)
+#### 2.3. 잔액 변경 메소드 (VendingMachine class)
 ```javascript
 changeBalance(amount, change) {
   // 1. change에 따라 잔액을 증가 혹은 감소시킨다.
   // 2. 변경된 잔액을 출력한다.
 }
 ```
-#### 2.5. 구매 가능한 상품을 분류하는 메소드 (VendingMachine class)
+#### 2.4. 구매 가능한 상품을 분류하는 메소드 (VendingMachine class)
 ```javascript
 getAvailableList() {
   // 1. 잔액을 기준으로 가격이 같거나 적은 상품,
@@ -54,7 +46,7 @@ getAvailableList() {
   // 3. 만든 리스트를 클래스 내부에 저장.
 }
 ```
-#### 2.6. 구매 가능한 상품 리스트를 출력하는 메소드 (VendingMachine class)
+#### 2.5. 구매 가능한 상품 리스트를 출력하는 메소드 (VendingMachine class)
 ```javascript
 showAvailableList() {
   // 1. 객체 형태의 구매 가능한 상품 리스트를 보기 좋게 출력한다.
