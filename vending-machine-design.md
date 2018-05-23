@@ -71,3 +71,10 @@ getSelectedItem(itemName) {
   return item;
 }
 ```
+#### 2.8. 잔돈 반환 함수
+```javascript
+function returnMoney() {
+  // 1. 남은 잔액이 반환됐다는 메세지 출력
+  // 2. 잔액을 0으로 만든다.
+}
+```
