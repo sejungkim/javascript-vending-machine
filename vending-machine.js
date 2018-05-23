@@ -37,8 +37,6 @@ class VendingMachine {
     const itemIndex = this.availableList.findIndex(
       item => item.name === itemName
     );
-
-    if (itemIndex < 0) throw "선택할 수 없는 상품입니다.";
     return this.availableList[itemIndex];
   }
 }
@@ -78,6 +76,7 @@ function insertCoin(amount) {
 
 function selectItem(itemName) {
   const selectedItem = beverageVM.getSelectedItem(itemName);
+  if (!selectedItem) return console.log(`>> [!] 선택할 수 없는 상품입니다.`);
   console.log(`>> "${selectedItem.name}"가/이 나왔습니다.\n`);
 
   beverageVM.changeBalance(selectedItem.price, { change: '-' });
@@ -87,8 +86,14 @@ function selectItem(itemName) {
   beverageVM.showAvailableList();
 }
 
+function returnMoney() {
+  console.log(`>> "${beverageVM.balance}원"이 반환됐습니다.`);
+  beverageVM.balance = 0;
+}
+
 // Run
 insertCoin(2100);
 selectItem('포도쥬스');
 selectItem('딸기우유');
 selectItem('콜라');
+returnMoney();
