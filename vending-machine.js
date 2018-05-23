@@ -24,11 +24,22 @@ class VendingMachine {
   }
 
   showAvailableList() {
-    const AvailableListMsg = this.availableList.reduce(
+    let availableListMsg = this.availableList.reduce(
       (resultMsg, item) => resultMsg + ` ${item.name}(${item.price}원),`
-      , '').slice(0, -1);
+      , ''
+    ).slice(0, -1);
 
-    console.log(`>> 구매 가능한 음료수 :${AvailableListMsg}`);
+    if (!availableListMsg) availableListMsg = ' 없음';
+    console.log(`>> 구매 가능한 음료수 :${availableListMsg}`);
+  }
+
+  getSelectedItem(itemName) {
+    const itemIndex = this.availableList.findIndex(
+      item => item.name === itemName
+    );
+
+    if (itemIndex < 0) throw "선택할 수 없는 상품입니다.";
+    return this.availableList[itemIndex];
   }
 }
 
@@ -65,5 +76,19 @@ function insertCoin(amount) {
   beverageVM.showAvailableList();
 }
 
+function selectItem(itemName) {
+  const selectedItem = beverageVM.getSelectedItem(itemName);
+  console.log(`>> "${selectedItem.name}"가/이 나왔습니다.\n`);
+
+  beverageVM.changeBalance(selectedItem.price, { change: '-' });
+  selectedItem.stock -= 1;
+
+  beverageVM.getAvailableList();
+  beverageVM.showAvailableList();
+}
+
 // Run
-insertCoin(900);
+insertCoin(2100);
+selectItem('포도쥬스');
+selectItem('딸기우유');
+selectItem('콜라');
