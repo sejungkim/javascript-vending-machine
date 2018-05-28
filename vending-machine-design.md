@@ -23,9 +23,9 @@ class VendingMachine {
   // 3. 그 외 메소드들
 }
 ```
-#### 2.2. 돈을 넣는(받는) 함수
+#### 2.2. 돈을 넣는(받는) 메소드 (VendingMachine class)
 ```javascript
-function insertCoin(amount) {
+insertCoin(amount) {
   // 1. 잔액을 변경시킨다.
   // 2. 변경된 잔액 기준으로 구매 가능한 상품을 분류한다.
   // 3. 분류한 구매 가능한 상품 리스트를 출력한다.
@@ -52,9 +52,9 @@ showAvailableList() {
   // 1. 객체 형태의 구매 가능한 상품 리스트를 보기 좋게 출력한다.
 }
 ```
-#### 2.6. 구매할 상품을 선택하는 함수
+#### 2.6. 구매할 상품을 선택하는 메소드 (VendingMachine class)
 ```javascript
-function selectItem(itemName) {
+selectItem(itemName) {
   // 1. 구매 가능한 상품 리스트에서 입력받은 상품을 찾음
   // 2. 상품이 없다면 에러 처리, 있다면 상품 출력
   // 3. 선택된 상품 가격만큼 잔액 변경
@@ -71,9 +71,9 @@ getSelectedItem(itemName) {
   return item;
 }
 ```
-#### 2.8. 잔돈 반환 함수
+#### 2.8. 잔돈 반환 메소드 (VendingMachine class)
 ```javascript
-function returnMoney() {
+returnMoney() {
   // 1. 남은 잔액이 반환됐다는 메세지 출력
   // 2. 잔액을 0으로 만든다.
 }

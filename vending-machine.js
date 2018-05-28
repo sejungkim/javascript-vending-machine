@@ -6,6 +6,30 @@ class VendingMachine {
     this.productList = productList;
   }
 
+  insertCoin(amount) {
+    this.changeBalance(amount, { change: '+' });
+    this.getAvailableList();
+    this.showAvailableList();
+  }
+
+  selectItem(itemName) {
+    const selectedItem = this.getSelectedItem(itemName);
+
+    if (!selectedItem) return console.log(`>> [!] 선택할 수 없는 상품입니다.`);
+    console.log(`>> "${selectedItem.name}"가/이 나왔습니다.\n`);
+
+    this.changeBalance(selectedItem.price, { change: '-' });
+    selectedItem.stock -= 1;
+
+    this.getAvailableList();
+    this.showAvailableList();
+  }
+
+  returnMoney() {
+    console.log(`>> "${this.balance}원"이 반환됐습니다.`);
+    this.balance = 0;
+  }
+
   changeBalance(amount, { change }) {
     if (change === '+') {
       this.balance += amount;
@@ -68,32 +92,9 @@ const beverageList = [{
 }];
 const beverageVM = new VendingMachine(beverageList);
 
-function insertCoin(amount) {
-  beverageVM.changeBalance(amount, { change: '+' });
-  beverageVM.getAvailableList();
-  beverageVM.showAvailableList();
-}
-
-function selectItem(itemName) {
-  const selectedItem = beverageVM.getSelectedItem(itemName);
-  if (!selectedItem) return console.log(`>> [!] 선택할 수 없는 상품입니다.`);
-  console.log(`>> "${selectedItem.name}"가/이 나왔습니다.\n`);
-
-  beverageVM.changeBalance(selectedItem.price, { change: '-' });
-  selectedItem.stock -= 1;
-
-  beverageVM.getAvailableList();
-  beverageVM.showAvailableList();
-}
-
-function returnMoney() {
-  console.log(`>> "${beverageVM.balance}원"이 반환됐습니다.`);
-  beverageVM.balance = 0;
-}
-
 // Run
-insertCoin(2100);
-selectItem('포도쥬스');
-selectItem('딸기우유');
-selectItem('콜라');
-returnMoney();
+beverageVM.insertCoin(2100);
+beverageVM.selectItem('포도쥬스');
+beverageVM.selectItem('딸기우유');
+beverageVM.selectItem('콜라');
+beverageVM.returnMoney();
